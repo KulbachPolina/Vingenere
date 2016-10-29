@@ -6,7 +6,7 @@
 
 int main (int argc, string argv[])
 {
-    if(argc !=2)
+    if(argc!=2)
     {
         printf("You have missed a key or entered more than one");
         return 1;
@@ -16,7 +16,7 @@ int main (int argc, string argv[])
 
     for (int i=0; i<strlen(key); i++)
     {
-        if(!isalpha(key[i]))
+        if(isalpha(key[i])!=true)
         {
             printf("The key is not alphabetical");
             return 1;
@@ -26,16 +26,17 @@ int main (int argc, string argv[])
 
     }
     string text = GetString();
+    int counter = 0;
 
-    for (int i=0, k=0; i<strlen(text); i++)
+    for (int i=0; i<strlen(text); i++)
     {
         if(isalpha(text[i]))
         {
             if (isupper(text[i]))
-        text[i] = (((text[i]-'A') + (key[(k++)%strlen(key)]-'A')) % 26) + 'A';
+        text[i] = (((text[i]-'A') + (key[(counter++)%strlen(key)]-'A')) % 26) + 'A';
 
                 if(islower(text[i]))
-                text[i] = ((text[i]-'a') + (key[(k++)%strlen(key)]-'A')) % 26 + 'a';
+                text[i] = ((text[i]-'a') + (key[(counter++)%strlen(key)]-'A')) % 26 + 'a';
 
         }
 
